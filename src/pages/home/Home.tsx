@@ -1,3 +1,27 @@
+type GameCard = {
+  icon: string;
+  title: string;
+  text: string;
+};
+
+const gameCards: GameCard[] = [
+  {
+    icon: "⚔️",
+    title: "Combates",
+    text: "Enfréntate a diferentes enemigos y utiliza tus habilidades para superar cada batalla.",
+  },
+  {
+    icon: "🛡️",
+    title: "Exploración",
+    text: "Recorre bosques, ruinas y antiguos territorios llenos desecretos por descubrir.",
+  },
+  {
+    icon: "🏰",
+    title: "Aventura",
+    text: "Descubre la historia del reino y decide el destino del caballero.",
+  },
+];
+
 const Home = () => {
   return (
     <>
@@ -53,38 +77,17 @@ const Home = () => {
           </p>
 
           <div className="row features">
-            <article className="col-4 card">
-              <div className="card-icon">⚔️</div>
+            {gameCards.map((item) => {
+              return (
+                <article className="col-4 card">
+                  <div className="card-icon">{item.icon}</div>
 
-              <h3>Combates</h3>
+                  <h3>{item.title}</h3>
 
-              <p>
-                Enfréntate a diferentes enemigos y utiliza tus habilidades para
-                superar cada batalla.
-              </p>
-            </article>
-
-            <article className="col-4 card">
-              <div className="card-icon">🛡️</div>
-
-              <h3>Exploración</h3>
-
-              <p>
-                Recorre bosques, ruinas y antiguos territorios llenos de
-                secretos por descubrir.
-              </p>
-            </article>
-
-            <article className="col-4 card">
-              <div className="card-icon">🏰</div>
-
-              <h3>Aventura</h3>
-
-              <p>
-                Descubre la historia del reino y decide el destino del
-                caballero.
-              </p>
-            </article>
+                  <p>{item.text}</p>
+                </article>
+              );
+            })}
           </div>
         </section>
 
