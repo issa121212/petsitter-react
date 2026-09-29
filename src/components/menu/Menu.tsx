@@ -1,21 +1,30 @@
 import { Link } from "wouter";
-import styles from "./Menu.module.css";
 
 const Menu = () => {
   return (
-    <nav className={styles.nav}>
-      <ul className={styles.list}>
-        <li className={styles.item}>
-          <Link href="/">home</Link>
-        </li>
-        <li className={styles.item}>
-          <Link href="/login">login</Link>
-        </li>
-        <li className={styles.item}>
-          <Link href="/register">register</Link>
-        </li>
-      </ul>
-    </nav>
+    <header>
+      <nav>
+        <div className="logo">Knight of Ruin</div>
+
+        <ul className="nav-links">
+          <li>
+            <Link href="/">Inicio</Link>
+          </li>
+
+          <li>
+            <Link href="#juego">El juego</Link>
+          </li>
+
+          <li>
+            <Link href="/login">Iniciar sesión</Link>
+          </li>
+
+          <li>
+            <Link href="/register">Registrarse</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

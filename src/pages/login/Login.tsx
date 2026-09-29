@@ -1,39 +1,52 @@
-import { useState } from "react";
-import Input from "../../components/input/Input";
-import Button from "../../components/button/Button";
-import Card from "../../components/card/Card";
-
 const Login = () => {
-  const [email, setEmail] = useState<string>("");
-  const [contrasena, setContrasena] = useState<string>("");
-
-  const handleChangeEmail = (event: any) => {
-    console.log(event.target.value);
-    setEmail(event.target.value);
-  };
-
-  const handleChangeContrasena = (event: any) => {
-    console.log(event.target.value);
-    setContrasena(event.target.value);
-  };
   return (
-    <>
-      <Card
-        title="Login"
-        subtitle="Bievenido otra vez"
-        footer={
-          <>
-            <Button variant="contained">Entrar</Button>
-            <Button variant="text">Olvide mi contraseña</Button>
-          </>
-        }
-      >
-        <Input label="Email" onChange={handleChangeEmail} />
-        <Input label="Contraseña" onChange={handleChangeContrasena} />
-        <strong>{email}</strong>
-        <strong>{contrasena}</strong>
-      </Card>
-    </>
+    <main>
+      <section className="form-section">
+        <div className="form-container">
+          <h1>Iniciar sesión</h1>
+
+          <p>Ingresa a tu cuenta para continuar tu aventura.</p>
+
+          <form id="loginForm">
+            <div className="form-group">
+              <label htmlFor="email">Correo electrónico</label>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="correo@ejemplo.com"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Contraseña</label>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Ingresa tu contraseña"
+                minLength={6}
+                required
+              />
+            </div>
+
+            <p id="loginMessage" className="form-message"></p>
+
+            <button type="submit" className="button">
+              Iniciar sesión
+            </button>
+          </form>
+
+          <p className="form-link">
+            ¿No tienes una cuenta?
+            <a href="register.html">Registrarse</a>
+          </p>
+        </div>
+      </section>
+    </main>
   );
 };
 
