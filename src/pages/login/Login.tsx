@@ -1,50 +1,56 @@
-const Login = () => {
+import { Link } from 'wouter';
+
+export const Login = () => {
   return (
-    <main>
-      <section className="form-section">
-        <div className="form-container">
-          <h1>Iniciar sesión</h1>
+    <main className="login-container">
+      <section className="login-card">
+        <img src="imgs/mascotas.jpeg" alt="Paseo de mascotas" />
 
-          <p>Ingresa a tu cuenta para continuar tu aventura.</p>
+        <header className="login-header">
+          <h1>PetSitter</h1>
+          <p>Inicia sesión para continuar</p>
+        </header>
 
-          <form id="loginForm">
-            <div className="form-group">
-              <label htmlFor="email">Correo electrónico</label>
+        <form id="loginForm" onSubmit={(e) => e.preventDefault()}>
+          <div className="form-group">
+            <label htmlFor="email">Correo electrónico</label>
 
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="correo@ejemplo.com"
-                required
-              />
-            </div>
+            <input
+              className="input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ejemplo@correo.com"
+              required
+            />
+          </div>
 
-            <div className="form-group">
-              <label htmlFor="password">Contraseña</label>
+          <div className="form-group">
+            <label htmlFor="password">Contraseña</label>
 
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Ingresa tu contraseña"
-                minLength={6}
-                required
-              />
-            </div>
+            <input
+              className="input"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Ingresa tu contraseña"
+              required
+            />
+          </div>
 
-            <p id="loginMessage" className="form-message"></p>
+          <button type="submit" className="button is-primary login-button">
+            Iniciar sesión
+          </button>
 
-            <button type="submit" className="button">
-              Iniciar sesión
-            </button>
-          </form>
+          <p id="mensaje" className="mensaje"></p>
+        </form>
 
-          <p className="form-link">
-            ¿No tienes una cuenta?
-            <a href="register.html">Registrarse</a>
+        <footer className="login-footer">
+          <p>
+            ¿No tienes una cuenta?{' '}
+            <Link href="/register">Regístrate</Link>
           </p>
-        </div>
+        </footer>
       </section>
     </main>
   );
