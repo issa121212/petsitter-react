@@ -12,12 +12,12 @@ const pets: PetSitterItem[] = [
   {
     title: "Rocky",
     description: "Golden Retriever · 3 años · Enérgico y juguetón.",
-    imgSrc: "/imgs/golden.avif",
+    imgSrc: "imgs/golden.avif",
   },
   {
     title: "Luna",
     description: "Gata Mestiza · 2 años · Regalona y tranquila.",
-    imgSrc: "/imgs/gato.jpg",
+    imgSrc: "imgs/gato.jpg",
   },
 ];
 
@@ -25,12 +25,12 @@ const workers: PetSitterItem[] = [
   {
     title: "Carlos Muñoz",
     description: "Paseador canino certificado con 4 años de experiencia.",
-    imgSrc: "/imgs/carlos.webp",
+    imgSrc: "imgs/carlos.webp",
   },
   {
     title: "Valentina Soto",
     description: "Cuidadora especialista en primeros auxilios veterinarios.",
-    imgSrc: "/imgs/valentina.webp",
+    imgSrc: "imgs/valentina.webp",
   },
 ];
 

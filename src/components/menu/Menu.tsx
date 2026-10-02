@@ -6,7 +6,7 @@ const Menu = () => {
   return (
     <header className={styles.header}>
       <Link href="/" className={styles.logoBox}>
-        <img src="/imgs/logo-marca.jpeg" alt="Logo PetSitter" width="45" height="45" />
+        <img src="imgs/logo-marca.jpeg" alt="Logo PetSitter" width="45" height="45" />
         <h1>PetSitter</h1>
       </Link>
 

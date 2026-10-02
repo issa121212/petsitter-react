@@ -16,7 +16,7 @@ export const Login = () => {
   return (
     <main className={styles.loginContainer}>
       <section className={styles.loginCard}>
-        <img src="/imgs/mascotas.jpeg" alt="Paseo de mascotas" className={styles.bannerImg} />
+        <img src="imgs/mascotas.jpeg" alt="Paseo de mascotas" className={styles.bannerImg} />
 
         <header className={styles.loginHeader}>
           <h1>PetSitter</h1>
