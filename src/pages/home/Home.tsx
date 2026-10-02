@@ -1,113 +1,88 @@
-type GameCard = {
-  icon: string;
+import { Link } from 'wouter';
+import { Button } from '../../components/button/Button';
+
+// 1. Definimos los tipos de datos para las mascotas y trabajadores
+type PetSitterItem = {
   title: string;
-  text: string;
+  description: string;
+  imgSrc: string;
 };
 
-const gameCards: GameCard[] = [
+const pets: PetSitterItem[] = [
   {
-    icon: "⚔️",
-    title: "Combates",
-    text: "Enfréntate a diferentes enemigos y utiliza tus habilidades para superar cada batalla.",
+    title: "Rocky",
+    description: "Golden Retriever · 3 años · Enérgico y juguetón.",
+    imgSrc: "imgs/golden.avif",
   },
   {
-    icon: "🛡️",
-    title: "Exploración",
-    text: "Recorre bosques, ruinas y antiguos territorios llenos desecretos por descubrir.",
-  },
-  {
-    icon: "🏰",
-    title: "Aventura",
-    text: "Descubre la historia del reino y decide el destino del caballero.",
+    title: "Luna",
+    description: "Gata Mestiza · 2 años · Regalona y tranquila.",
+    imgSrc: "imgs/gato.jpg",
   },
 ];
 
-const Home = () => {
+const workers: PetSitterItem[] = [
+  {
+    title: "Carlos Muñoz",
+    description: "Paseador canino certificado con 4 años de experiencia.",
+    imgSrc: "imgs/carlos.webp",
+  },
+  {
+    title: "Valentina Soto",
+    description: "Cuidadora especialista en primeros auxilios veterinarios.",
+    imgSrc: "imgs/valentina.webp",
+  },
+];
+
+export const Home = () => {
   return (
-    <>
-      <main>
-        <section className="hero">
-          <div className="hero-overlay"></div>
+    <main>
+      <section>
+        <h2>¿Quiénes Somos?</h2>
+        <p>De la mano de un equipo especializado, cuidamos y paseamos a tus mascotas con dedicación y seguridad diaria.</p>
+      </section>
 
-          <div className="hero-content">
-            <div className="row">
-              <div className="col-6 hero-text">
-                <span className="game-label"> RPG • DARK FANTASY </span>
-
-                <h1>Knight of Ruin</h1>
-
-                <h2>
-                  El reino ha caído.
-                  <br />
-                  Tu aventura comienza.
-                </h2>
-
-                <p>
-                  Explora un mundo en ruinas, descubre antiguos secretos y
-                  enfréntate a peligrosos enemigos en una aventura RPG de pixel
-                  art.
-                </p>
-
-                <div className="hero-buttons">
-                  <a href="register.html" className="button">
-                    {" "}
-                    Crear cuenta{" "}
-                  </a>
-
-                  <a href="login.html" className="button secondary">
-                    Iniciar sesión
-                  </a>
-                </div>
-              </div>
-
-              <div className="col-6 hero-image-container"></div>
+      {/* Sección de Mascotas usando .map() */}
+      <section>
+        <h2>Nuestros Peludos</h2>
+        <div className="row">
+          {pets.map((pet, index) => (
+            <div className="col-6 col-sm-12 card" key={index}>
+              <img src={pet.imgSrc} alt={pet.title} className="card-img" />
+              <h3>{pet.title}</h3>
+              <p>{pet.description}</p>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        <section id="juego" className="section">
-          <span className="section-label"> EL MUNDO </span>
+      {/* Sección de Trabajadores usando .map() */}
+      <section>
+        <h2>Trabajadores</h2>
+        <div className="row">
+          {workers.map((worker, index) => (
+            <div className="col-6 col-sm-12 card" key={index}>
+              <img src={worker.imgSrc} alt={worker.title} className="card-img" />
+              <h3>{worker.title}</h3>
+              <p>{worker.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <h2>Una aventura en un reino en ruinas</h2>
-
-          <p className="section-intro">
-            Un antiguo reino ha caído en la oscuridad. Explora sus territorios,
-            enfréntate a sus peligros y descubre los secretos que se esconden
-            entre sus ruinas.
-          </p>
-
-          <div className="row features">
-            {gameCards.map((item) => {
-              return (
-                <article className="col-4 card">
-                  <div className="card-icon">{item.icon}</div>
-
-                  <h3>{item.title}</h3>
-
-                  <p>{item.text}</p>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="register-section">
-          <span className="section-label"> COMIENZA TU VIAJE </span>
-
-          <h2>¿Estás listo para comenzar?</h2>
-
-          <p>
-            Crea tu cuenta y prepárate para descubrir el mundo de Knight of
-            Ruin.
-          </p>
-
-          <a href="register.html" className="button">
-            {" "}
-            Registrarse{" "}
-          </a>
-        </section>
-      </main>
-    </>
+      <section className="agendar">
+        <h2>Agendar Servicio</h2>
+        <p>Para agendar un paseo para tu mascota, ingresa con tu cuenta o regístrate:</p>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <Link href="/login">
+            <Button text="Ingresar Usuario" />
+          </Link>
+          <Link href="/register">
+            <Button text="Registrarse" />
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 };
 
