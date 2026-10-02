@@ -1,7 +1,7 @@
-import { Link } from 'wouter';
-import { Button } from '../../components/button/Button';
+import { Link } from "wouter";
+import Button from "../../components/button/Button";
+import Card from "../../components/card/Card";
 
-// 1. Definimos los tipos de datos para las mascotas y trabajadores
 type PetSitterItem = {
   title: string;
   description: string;
@@ -12,12 +12,12 @@ const pets: PetSitterItem[] = [
   {
     title: "Rocky",
     description: "Golden Retriever · 3 años · Enérgico y juguetón.",
-    imgSrc: "imgs/golden.avif",
+    imgSrc: "/imgs/golden.avif",
   },
   {
     title: "Luna",
     description: "Gata Mestiza · 2 años · Regalona y tranquila.",
-    imgSrc: "imgs/gato.jpg",
+    imgSrc: "/imgs/gato.jpg",
   },
 ];
 
@@ -25,12 +25,12 @@ const workers: PetSitterItem[] = [
   {
     title: "Carlos Muñoz",
     description: "Paseador canino certificado con 4 años de experiencia.",
-    imgSrc: "imgs/carlos.webp",
+    imgSrc: "/imgs/carlos.webp",
   },
   {
     title: "Valentina Soto",
     description: "Cuidadora especialista en primeros auxilios veterinarios.",
-    imgSrc: "imgs/valentina.webp",
+    imgSrc: "/imgs/valentina.webp",
   },
 ];
 
@@ -42,43 +42,47 @@ export const Home = () => {
         <p>De la mano de un equipo especializado, cuidamos y paseamos a tus mascotas con dedicación y seguridad diaria.</p>
       </section>
 
-      {/* Sección de Mascotas usando .map() */}
+      {/* Mascotas renderizadas con el componente <Card> */}
       <section>
         <h2>Nuestros Peludos</h2>
         <div className="row">
           {pets.map((pet, index) => (
-            <div className="col-6 col-sm-12 card" key={index}>
-              <img src={pet.imgSrc} alt={pet.title} className="card-img" />
-              <h3>{pet.title}</h3>
-              <p>{pet.description}</p>
+            <div className="col-6 col-sm-12" key={index}>
+              <Card
+                image={pet.imgSrc}
+                title={pet.title}
+                subtitle={pet.description}
+              />
             </div>
           ))}
         </div>
       </section>
 
-      {/* Sección de Trabajadores usando .map() */}
+      {/* Trabajadores renderizados con el componente <Card> */}
       <section>
         <h2>Trabajadores</h2>
         <div className="row">
           {workers.map((worker, index) => (
-            <div className="col-6 col-sm-12 card" key={index}>
-              <img src={worker.imgSrc} alt={worker.title} className="card-img" />
-              <h3>{worker.title}</h3>
-              <p>{worker.description}</p>
+            <div className="col-6 col-sm-12" key={index}>
+              <Card
+                image={worker.imgSrc}
+                title={worker.title}
+                subtitle={worker.description}
+              />
             </div>
           ))}
         </div>
       </section>
 
-      <section className="agendar">
+      <section style={{ backgroundColor: "#ffffff", padding: "20px", borderRadius: "8px", marginTop: "24px" }}>
         <h2>Agendar Servicio</h2>
         <p>Para agendar un paseo para tu mascota, ingresa con tu cuenta o regístrate:</p>
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: "flex", gap: "10px", marginTop: "12px" }}>
           <Link href="/login">
-            <Button text="Ingresar Usuario" />
+            <Button variant="outlined">Ingresar Usuario</Button>
           </Link>
           <Link href="/register">
-            <Button text="Registrarse" />
+            <Button variant="contained">Registrarse</Button>
           </Link>
         </div>
       </section>
