@@ -1,75 +1,85 @@
-import { Link } from 'wouter';
+import { useState } from "react";
+import { Link } from "wouter";
+import Input from "../../components/input/Input";
+import Button from "../../components/button/Button";
+import styles from "./Register.module.css";
 
 export const Register = () => {
+  const [genero, setGenero] = useState("masculino");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert("Registro enviado exitosamente");
+  };
+
   return (
-    <div className="tarjeta-formulario">
-      <form id="form-registro" onSubmit={(e) => e.preventDefault()}>
-        <h2 className="has-text-centered is-size-3 has-text-weight-bold mb-4">PetSitter 🐾</h2>
+    <main className={styles.registerContainer}>
+      <div className={styles.registerCard}>
+        <form onSubmit={handleSubmit}>
+          <h2 className={styles.title}>PetSitter 🐾</h2>
 
-        <div className="fila campo">
-          <div className="columna">
-            <label htmlFor="nombre">Nombres</label>
-            <input id="nombre" name="nombre" className="input" type="text" placeholder="Ej: Daniel" />
+          <div className={styles.rowFields}>
+            <Input id="nombre" name="nombre" label="Nombres" placeholder="Ej: Daniel" required />
+            <Input id="apellido" name="apellido" label="Apellidos" placeholder="Ej: González" required />
           </div>
-          <div className="columna">
-            <label htmlFor="apellido">Apellidos</label>
-            <input id="apellido" name="apellido" className="input" type="text" placeholder="Ej: González" />
+
+          <Input id="email" name="email" type="email" label="Correo electrónico" placeholder="Ej: javier@gmail.com" required />
+          <Input id="telefono" name="telefono" type="tel" label="Teléfono" placeholder="Ej: 912345678" required />
+          <Input id="rut" name="rut" label="RUT" placeholder="Ej: 12.345.678-5" required />
+
+          <div className={styles.genderSection}>
+            <span className={styles.genderLabel}>Sexo</span>
+            <div className={styles.genderOptions}>
+              <label className={styles.genderOption}>
+                <input
+                  type="radio"
+                  name="genero"
+                  value="masculino"
+                  checked={genero === "masculino"}
+                  onChange={() => setGenero("masculino")}
+                />
+                <span>Masculino</span>
+              </label>
+
+              <label className={styles.genderOption}>
+                <input
+                  type="radio"
+                  name="genero"
+                  value="femenino"
+                  checked={genero === "femenino"}
+                  onChange={() => setGenero("femenino")}
+                />
+                <span>Femenino</span>
+              </label>
+
+              <label className={styles.genderOption}>
+                <input
+                  type="radio"
+                  name="genero"
+                  value="otro"
+                  checked={genero === "otro"}
+                  onChange={() => setGenero("otro")}
+                />
+                <span>Otro</span>
+              </label>
+            </div>
           </div>
-        </div>
 
-        <div className="campo">
-          <label htmlFor="email">Correo electrónico</label>
-          <input id="email" name="email" className="input" type="email" placeholder="Ej: javier@gmail.com" />
-        </div>
-
-        <div className="campo">
-          <label htmlFor="telefono">Teléfono</label>
-          <input id="telefono" name="telefono" className="input" type="tel" placeholder="Ej: 912345678" />
-        </div>
-
-        <div className="campo">
-          <label htmlFor="rut">RUT</label>
-          <input id="rut" name="rut" className="input" type="text" placeholder="Ej: 12.345.678-5" />
-        </div>
-
-        <div className="campo">
-          <label>Sexo</label>
-          <div className="opciones-genero">
-            <label className="opcion-btn">
-              <input type="radio" name="genero" value="masculino" />
-              <span>Masculino</span>
-            </label>
-            <label className="opcion-btn">
-              <input type="radio" name="genero" value="femenino" />
-              <span>Femenino</span>
-            </label>
-            <label className="opcion-btn">
-              <input type="radio" name="genero" value="otro" />
-              <span>Otro</span>
-            </label>
+          <div className={styles.rowFields}>
+            <Input id="password" name="password" type="password" label="Contraseña" placeholder="Mínimo 8 caracteres" required />
+            <Input id="confirm-password" name="confirm-password" type="password" label="Confirmar Contraseña" placeholder="Repetir contraseña" required />
           </div>
-        </div>
-        
-        <div className="fila campo">
-          <div className="columna">
-            <label htmlFor="password">Contraseña</label>
-            <input id="password" name="password" className="input" type="password" placeholder="Mínimo 8 caracteres" />
-          </div>
-          <div className="columna">
-            <label htmlFor="confirm-password">Confirmar Contraseña</label>
-            <input id="confirm-password" name="confirm-password" className="input" type="password" placeholder="Repetir contraseña" />
-          </div>
-        </div>
 
-        <button type="submit" className="button is-info is-fullwidth mt-4" id="btn-submit">
-          Registrar
-        </button>
+          <Button type="submit" variant="contained" className={styles.fullWidthButton}>
+            Registrar
+          </Button>
 
-        <p className="has-text-centered mt-3 is-size-7">
-          ¿Ya tienes cuenta? <Link href="/login">Inicia sesión</Link> · <Link href="/">Volver al inicio</Link>
-        </p>
-      </form>
-    </div>
+          <p className={styles.registerFooter}>
+            ¿Ya tienes cuenta? <Link href="/login">Inicia sesión</Link> · <Link href="/">Volver al inicio</Link>
+          </p>
+        </form>
+      </div>
+    </main>
   );
 };
 
