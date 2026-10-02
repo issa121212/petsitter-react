@@ -1,54 +1,59 @@
-import { Link } from 'wouter';
+import { useState } from "react";
+import { Link } from "wouter";
+import Input from "../../components/input/Input";
+import Button from "../../components/button/Button";
+import styles from "./Login.module.css";
 
 export const Login = () => {
-  return (
-    <main className="login-container">
-      <section className="login-card">
-        <img src="imgs/mascotas.jpeg" alt="Paseo de mascotas" />
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-        <header className="login-header">
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert(`Iniciando sesión con: ${email}`);
+  };
+
+  return (
+    <main className={styles.loginContainer}>
+      <section className={styles.loginCard}>
+        <img src="/imgs/mascotas.jpeg" alt="Paseo de mascotas" className={styles.bannerImg} />
+
+        <header className={styles.loginHeader}>
           <h1>PetSitter</h1>
           <p>Inicia sesión para continuar</p>
         </header>
 
-        <form id="loginForm" onSubmit={(e) => e.preventDefault()}>
-          <div className="form-group">
-            <label htmlFor="email">Correo electrónico</label>
+        <form onSubmit={handleSubmit}>
+          <Input
+            label="Correo electrónico"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="ejemplo@correo.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-            <input
-              className="input"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="ejemplo@correo.com"
-              required
-            />
-          </div>
+          <Input
+            label="Contraseña"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Ingresa tu contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-          <div className="form-group">
-            <label htmlFor="password">Contraseña</label>
-
-            <input
-              className="input"
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Ingresa tu contraseña"
-              required
-            />
-          </div>
-
-          <button type="submit" className="button is-primary login-button">
+          <Button type="submit" variant="contained" className={styles.fullWidthButton}>
             Iniciar sesión
-          </button>
-
-          <p id="mensaje" className="mensaje"></p>
+          </Button>
         </form>
 
-        <footer className="login-footer">
+        <footer className={styles.loginFooter}>
           <p>
-            ¿No tienes una cuenta?{' '}
-            <Link href="/register">Regístrate</Link>
+            ¿No tienes una cuenta? <Link href="/register">Regístrate</Link>
           </p>
         </footer>
       </section>
