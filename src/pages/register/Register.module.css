@@ -1,0 +1,91 @@
+.registerContainer {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.registerCard {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  text-align: center;
+  color: #1b4332;
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.rowFields {
+  display: flex;
+  gap: 12px;
+}
+
+.rowFields > div {
+  flex: 1;
+}
+
+.genderSection {
+  margin-bottom: 16px;
+}
+
+.genderLabel {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1b4332;
+  margin-bottom: 8px;
+}
+
+.genderOptions {
+  display: flex;
+  gap: 12px;
+}
+
+.genderOption {
+  flex: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1.5px solid #c2c9d1;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.genderOption input {
+  display: none;
+}
+
+.genderOption:has(input:checked) {
+  background-color: #e8f5e9;
+  border-color: #1b4332;
+  color: #1b4332;
+  font-weight: 600;
+}
+
+.fullWidthButton {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.registerFooter {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.registerFooter a {
+  color: #1b4332;
+  font-weight: 600;
+}
